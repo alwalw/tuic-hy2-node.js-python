@@ -156,8 +156,8 @@ run_background_loop() {
 main() {
   if ! load_existing_config; then
     read_port "$@"
-    TUIC_UUID="$(cat /proc/sys/kernel/random/uuid 2>/dev/null || uuidgen)"
-    TUIC_PASSWORD="$(openssl rand -hex 16)"
+    TUIC_UUID="${TUIC_USER:-$(cat /proc/sys/kernel/random/uuid 2>/dev/null || uuidgen)}"
+    TUIC_PASSWORD="${TUIC_PASS:-$(openssl rand -hex 16)}"
     generate_cert
     check_tuic_server
     generate_config
@@ -172,5 +172,3 @@ main() {
 }
 
 main "$@"
-
-
