@@ -1,13 +1,13 @@
 #!/bin/bash
 # =========================================
 # TUIC v1.4.5 over QUIC 自动部署脚本（免 root）
-# 固定 SNI：www.bing.com，
+# 固定 SNI：www.microsoft.com，
 # =========================================
 set -euo pipefail
 export LC_ALL=C
 IFS=$'\n\t'
 
-MASQ_DOMAIN="www.bing.com"
+MASQ_DOMAIN="www.microsoft.com"
 SERVER_TOML="server.toml"
 CERT_PEM="tuic-cert.pem"
 KEY_PEM="tuic-key.pem"
@@ -172,3 +172,4 @@ main() {
 }
 
 main "$@"
+
