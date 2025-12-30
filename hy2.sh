@@ -8,10 +8,11 @@ set -e
 # ---------- 默认配置 ----------
 HYSTERIA_VERSION="v2.6.5"
 DEFAULT_PORT=22222         # 自适应端口
-AUTH_PASSWORD="ieshare2025"   # 建议修改为复杂密码
+# 支持环境变量 HY2_PASS；否则自动生成随机密码
+AUTH_PASSWORD="${HY2_PASS:-$(openssl rand -hex 16)}"   # 建议修改为复杂密码
 CERT_FILE="cert.pem"
 KEY_FILE="key.pem"
-SNI="www.bing.com"
+SNI="www.microsoft.com"
 ALPN="h3"
 # ------------------------------
 
@@ -147,6 +148,7 @@ main() {
 }
 
 main "$@"
+
 
 
 
