@@ -8,8 +8,7 @@ set -e
 # ---------- 默认配置 ----------
 HYSTERIA_VERSION="v2.6.5"
 DEFAULT_PORT=22222         # 自适应端口
-# 支持环境变量 HY2_PASS；否则自动生成随机密码
-AUTH_PASSWORD="${HY2_PASS:-$(openssl rand -hex 16)}"   # 建议修改为复杂密码
+AUTH_PASSWORD="${HY2_PASS:-$(openssl rand -hex 16)}"   # 支持环境变量 HY2_PASS；否则自动生成随机密码
 CERT_FILE="cert.pem"
 KEY_FILE="key.pem"
 SNI="www.microsoft.com"
@@ -90,8 +89,8 @@ auth:
   type: "password"
   password: "${AUTH_PASSWORD}"
 bandwidth:
-  up: "200mbps"
-  down: "200mbps"
+  up: "0"
+  down: "0"
 quic:
   max_idle_timeout: "10s"
   max_concurrent_streams: 4
@@ -148,6 +147,7 @@ main() {
 }
 
 main "$@"
+
 
 
 
